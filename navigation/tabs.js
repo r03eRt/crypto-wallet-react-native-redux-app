@@ -5,7 +5,8 @@ import {
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 
 import { Home, Portfolio, Market, Profile } from "../screens"
-import { COLORS } from "../constants"
+import { TabIcon } from "../components/TabIcon"
+import { COLORS, icons } from "../constants"
 
 const Tab = createBottomTabNavigator()
 
@@ -14,7 +15,9 @@ const Tabs = () => {
     return (
         <Tab.Navigator
             screenOptions={{
+                showLabel: false,
                 tabBarStyle: {
+                    height: 140,
                     backgroundColor: COLORS.primary,
                     borderTopColor: "transparent",
                 }
@@ -23,22 +26,47 @@ const Tabs = () => {
             <Tab.Screen
                 name="Home"
                 component={Home}
+                options={{
+                    tabBarLabel:() => {return null},
+                    tabBarIcon: ({ focused }) => 
+                        (<TabIcon focused={focused} icon={icons.home} label="Home"/>)
+                }}
             />
             <Tab.Screen
                 name="Portfolio"
                 component={Portfolio}
+                options={{
+                    tabBarLabel:() => {return null},
+                    tabBarIcon: ({ focused }) => 
+                        (<TabIcon focused={focused} icon={icons.briefcase} label="Portfolio"/>)
+                }}
             />
             <Tab.Screen
                 name="Trade"
                 component={Home}
+                options={{
+                    tabBarLabel:() => {return null},
+                    tabBarIcon: ({ focused }) => 
+                        (<TabIcon focused={focused} icon={icons.trade} label="Trade" isTrade={true}/>)
+                }}
             />
             <Tab.Screen
                 name="Market"
                 component={Market}
+                options={{
+                    tabBarLabel:() => {return null},
+                    tabBarIcon: ({ focused }) => 
+                        (<TabIcon focused={focused} icon={icons.market} label="Market"/>)
+                }}
             />
             <Tab.Screen
                 name="Profile"
                 component={Profile}
+                options={{
+                    tabBarLabel:() => {return null},
+                    tabBarIcon: ({ focused }) => 
+                        (<TabIcon focused={focused} icon={icons.profile} label="Profile"/>)
+                }}
             />
         </Tab.Navigator>
     )

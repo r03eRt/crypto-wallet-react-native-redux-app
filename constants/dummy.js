@@ -20,9 +20,9 @@ export const profile = {
 
 export const settings = {
     launchScreen: "Home",
-    currency: "USD",
+    currency: "EUR",
     appearance: "Dark",
-    language: "English",
+    language: "Spanish",
     faceId: true,
 }
 

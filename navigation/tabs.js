@@ -65,6 +65,13 @@ const Tabs = () => {
                     !isTradeModalVisible &&
                         (<TabIcon focused={focused} icon={icons.briefcase} label="Portfolio"/>)
                 }}
+                listeners={{
+                    tabPress: (e) => {
+                        if(isTradeModalVisible) {
+                            e.preventDefault();
+                        }                        
+                    }
+                }}
             />
             <Tab.Screen
                 name="Trade"
@@ -75,7 +82,11 @@ const Tabs = () => {
                         (
                             <TabIcon 
                                 focused={focused}
-                                icon={icons.trade}
+                                icon={ isTradeModalVisible ? icons.close : icons.trade }
+                                iconStyle={ isTradeModalVisible ? {
+                                    width: 15,
+                                    height: 15
+                                } : null }
                                 label="Trade"
                                 isTrade={true}  
                             />
@@ -102,6 +113,13 @@ const Tabs = () => {
                     !isTradeModalVisible &&
                         (<TabIcon focused={focused} icon={icons.market} label="Market"/>)
                 }}
+                listeners={{
+                    tabPress: (e) => {
+                        if(isTradeModalVisible) {
+                            e.preventDefault();
+                        }                        
+                    }
+                }}
             />
             <Tab.Screen
                 name="Profile"
@@ -111,6 +129,13 @@ const Tabs = () => {
                     tabBarIcon: ({ focused }) => 
                     !isTradeModalVisible &&
                         (<TabIcon focused={focused} icon={icons.profile} label="Profile"/>)
+                }}
+                listeners={{
+                    tabPress: (e) => {
+                        if(isTradeModalVisible) {
+                            e.preventDefault();
+                        }                        
+                    }
                 }}
             />
         </Tab.Navigator>

@@ -20,6 +20,7 @@ export const getHoldings = (
     perPage = 10,
     page = 1
     ) => async (dispatch, getState) => {       
+        console.log('GETMARKET');
         try {
             dispatch(getHoldingsBegin())
 
@@ -64,7 +65,7 @@ export const getHoldings = (
 }
 
 export const getHoldingsBegin = () => {
-    console.log('getHoldingsBegin');
+    
     return {
         type: types.GET_HOLDINGS_BEGIN,
     }
@@ -72,7 +73,7 @@ export const getHoldingsBegin = () => {
 }
 
 export const getHoldingsSuccess = (myHoldings) => {
-    console.log('getHoldingsSuccess');
+    
     return {
         type: types.GET_HOLDINGS_SUCCESS,
         payload: { 
@@ -83,7 +84,7 @@ export const getHoldingsSuccess = (myHoldings) => {
 }
 
 export const getHoldingsFailure = (error) => {
-    console.log('getHoldingsFailure', error);
+    
     return {
         type: types.GET_HOLDINGS_FAILURE,
         payload: { 
@@ -104,14 +105,14 @@ export const getCoinMarket = (
     perPage = 10,
     page = 1
     ) => async (dispatch, getState) => {
-        console.log('GETCOINMARKET');
+        console.log('GETCOIN');
         try {
             dispatch(getCoinMarketBegin())
 
             let apiUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=${orderBy}&per_page=${perPage}&page=${page}&sparkline=${sparkline}&price_change_percentage=${priceChangePerc}`;
     
             const response = await axios.get(apiUrl, { header: {Accept: 'application/json'}});
-            console.log('SUCESSFULL --->', response);
+
             if(response.status == 200) {
                 dispatch(getCoinMarketSuccess(response.data));
             } else {
@@ -124,7 +125,7 @@ export const getCoinMarket = (
 
 
 export const getCoinMarketBegin = () => {
-    console.log('getCoinMarketBegin');
+    
     return {
         type: types.GET_COIN_MARKET_BEGIN,
     }
@@ -132,7 +133,7 @@ export const getCoinMarketBegin = () => {
 }
 
 export const getCoinMarketSuccess = (coins) => {
-    console.log('getCoinMarketSuccess');
+    
     return {
         type: types.GET_COIN_MARKET_SUCCESS,
         payload: { 
@@ -143,7 +144,7 @@ export const getCoinMarketSuccess = (coins) => {
 }
 
 export const getCoinMarketFailure = (error) => {
-    console.log('getCoinMarketFailure');
+    
     return {
         type: types.GET_COIN_MARKET_FAILURE,
         payload: { 

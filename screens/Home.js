@@ -4,10 +4,13 @@ import {
     View,
     Text
 } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { MainLayout } from '../screens/MainLayout'
-import { dummyData } from '../constants'
+import { dummyData, icons, SIZES } from '../constants'
 import { getHoldings, getCoinMarket } from '../store/market/marketActions'
+import { COLORS } from '../constants'
+import { WalletInfoSection } from '../components/WalletInfoSection';
+import { IconTextButton } from '../components/IconTextButton';
 
 const Home = () => {
 
@@ -17,15 +20,24 @@ const Home = () => {
     // ya que el sue effect se llama solo una vez cuando inicia el componente
     useFocusEffect(
         React.useCallback(() => {
-            dispatch(getHoldings(dummyData.holdings))
-            dispatch(getCoinMarket())
+            console.log('ejecuto use effect--------');
+            dispatch(getHoldings(dummyData.holdings));
+            dispatch(getCoinMarket());
         }, [])
     );
 
     return (
         <MainLayout>
-            <View>
-                <Text>Home</Text>
+            <View style={{
+                flex: 1,
+                backgroundColor: COLORS.black
+            }}>
+                {/** Header - wallet info */}
+                <WalletInfoSection/>
+                
+                {/** Chart */}
+                
+                {/** Cryptocurrency */}
             </View>
         </MainLayout>        
     )

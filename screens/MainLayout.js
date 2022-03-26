@@ -41,17 +41,21 @@ export const MainLayout = ({ children }) => {
             
             { children }
             {/** Background */}
-            <Animated.View style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                backgroundColor: COLORS.transparentBlack,
-                }}
-                opacity={modalAnimatedValue}
-            ></Animated.View>
-
+            {
+                isTradeModalVisible && (
+                    <Animated.View style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        backgroundColor: COLORS.transparentBlack,
+                        }}
+                        opacity={modalAnimatedValue}
+                    ></Animated.View>
+                )
+            }
+          
             {/** Modal */}
             <Animated.View style={{
                 position: 'absolute',

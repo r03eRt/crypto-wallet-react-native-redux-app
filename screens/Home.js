@@ -36,7 +36,7 @@ const Home = () => {
                 <WalletInfoSection/>
                 
                 {/** Chart */}
-                
+                W
                 {/** Cryptocurrency */}
             </View>
         </MainLayout>        
